@@ -1,5 +1,7 @@
 package com.astroblast.player;
 
+import java.awt.image.BufferedImage;
+
 public class Entity {
 
     //Position of the player on x-axis
@@ -10,4 +12,7 @@ public class Entity {
 
     //Speed of the player
     int playerSpeed;
+
+    public BufferedImage playerImage1, playerImage2, playerImage3, playerImage4, playerImage5;
+    int playerImageNumber;
 }
