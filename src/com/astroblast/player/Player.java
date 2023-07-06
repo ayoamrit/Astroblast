@@ -6,7 +6,11 @@ import com.astroblast.panel.ScreenProperties;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -78,31 +82,38 @@ public class Player extends Entity{
     //Draw the player on the screen
     public void draw(@NotNull Graphics2D g2d){
 
+        BufferedImage image = null;
+
         if(playerImageNumber == 1) {
-            //Draw the player image 1
-            g2d.drawImage(playerImage1, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
+            //Player Image 1
+            image = playerImage1;
             playerImageNumber++;
         }
         else if(playerImageNumber == 2){
-            //Draw the player image 2
-            g2d.drawImage(playerImage2, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
+            //Player Image 2
+            image = playerImage2;
             playerImageNumber++;
         }
         else if(playerImageNumber == 3){
-            //Draw the player image 3
-            g2d.drawImage(playerImage3, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
+            //Player Image 3
+            image = playerImage3;
             playerImageNumber++;
         }
         else if(playerImageNumber == 4){
-            //Draw the player image 4
-            g2d.drawImage(playerImage4, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
+            //Player Image 4
+            image = playerImage4;
             playerImageNumber++;
         }
         else{
-            //Draw the player image 5 and reset to image 1
-            g2d.drawImage(playerImage5, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
+            //Player Image 5
+            image = playerImage5;
+
+            //Reset to player image 1
             playerImageNumber = 1;
         }
+
+        //Draw image of the player
+        g2d.drawImage(image, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
 
         g2d.dispose();
     }

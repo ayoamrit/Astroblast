@@ -10,6 +10,7 @@ public class ScreenProperties {
     //Final size of a tile after scaling
     public final int tileSize = originalTileSize * scale;
 
+    public final int FPS = 60;
 
     //Maximum number of columns and rows on the screen
     final int maxScreenCol = 16;

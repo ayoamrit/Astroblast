@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void run(){
-        double drawInterval = 1000000000/60;  //0.0166 seconds
+        double drawInterval = (double) 1000000000 /screenProperties.FPS;  //0.0166 seconds
         double nextDrawTime = System.nanoTime();
 
         while(thread != null){
@@ -66,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+
         //Draw the player on the panel
         player.draw(g2d);
     }
