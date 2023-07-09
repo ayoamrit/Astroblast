@@ -6,10 +6,7 @@ import com.astroblast.panel.ScreenProperties;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
@@ -77,6 +74,15 @@ public class Player extends Entity{
         if(keyHandler.rightPressed){
             playerX = playerX + playerSpeed;
         }
+
+        if(keyHandler.shoot){
+
+            if(!shootedFireball){
+                new Fireball(playerX, playerY);
+                shootedFireball = true;
+            }
+        }
+
     }
 
     //Draw the player on the screen
@@ -112,9 +118,8 @@ public class Player extends Entity{
             playerImageNumber = 1;
         }
 
+
         //Draw image of the player
         g2d.drawImage(image, playerX, playerY, screenProperties.tileSize, screenProperties.tileSize, null);
-
-        g2d.dispose();
     }
 }

@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     //Boolean variables to track key press state
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, shoot;
     @Override
     public void keyTyped(KeyEvent e) {
         //This method is not used in the implementation
@@ -33,6 +33,9 @@ public class KeyHandler implements KeyListener {
         if(keyCode == KeyEvent.VK_D){
             rightPressed = true;
         }
+        if(keyCode == KeyEvent.VK_SPACE){
+            shoot = true;
+        }
     }
     @Override
     public void keyReleased(KeyEvent e) {
@@ -54,6 +57,10 @@ public class KeyHandler implements KeyListener {
 
         if(keyCode == KeyEvent.VK_D){
             rightPressed = false;
+        }
+
+        if(keyCode == KeyEvent.VK_SPACE){
+            shoot = false;
         }
     }
 }

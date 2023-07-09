@@ -19,4 +19,5 @@ public class ScreenProperties {
     //Width and height of the screen in pixels
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
+
 }
