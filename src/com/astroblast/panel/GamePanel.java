@@ -1,6 +1,7 @@
 package com.astroblast.panel;
 
 import com.astroblast.action.KeyHandler;
+import com.astroblast.asteroid.AsteroidManager;
 import com.astroblast.background.Background;
 import com.astroblast.player.Fireball;
 import com.astroblast.player.Player;
@@ -13,6 +14,7 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyHandler = new KeyHandler();
     Player player = new Player(this, keyHandler, screenProperties);
     Fireball fireball = new Fireball(screenProperties);
+    AsteroidManager asteroidManager = new AsteroidManager();
     Background background = new Background(screenProperties);
     Thread thread = null;
 
@@ -63,14 +65,24 @@ public class GamePanel extends JPanel implements Runnable{
         //Update the player's information
         player.update();
 
+        //Update the fireball's information
         fireball.update();
+
+        asteroidManager.update();
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+
+        //Draw the background on the panel
         background.draw(g2d);
+
+        asteroidManager.draw(g2d);
+
+        //Draw the fireball on the panel
         fireball.draw(g2d);
+
         //Draw the player on the panel
         player.draw(g2d);
 

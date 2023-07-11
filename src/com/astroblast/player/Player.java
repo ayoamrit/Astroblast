@@ -46,9 +46,19 @@ public class Player extends Entity{
 
     //Set default values for player position and speed
     public void setDefaultValues(){
-        //Set the initial player position
+        //Set the initial player position on x-axis
         playerX = 100;
+        //Right boundary
+        maxPlayerX = 768;
+        //Left boundary
+        minPlayerX = 0;
+
+        //Set the initial player position on y-axis
         playerY = 100;
+        //Bottom boundary
+        maxPlayerY = 576;
+        //Top boundary
+        minPlayerY = 0;
 
         //Set the player speed
         playerSpeed = 4;
@@ -59,29 +69,59 @@ public class Player extends Entity{
 
     //Update the player position based on the key inputs
     public void update(){
+
         if(keyHandler.upPressed){
-            playerY = playerY - playerSpeed;
+            if(playerY > minPlayerY) {
+
+                //Move the player by the player's speed
+                playerY = playerY - playerSpeed;
+            }else{
+                //If the player reaches the top boundary, wrap around to the bottom boundary
+                playerY = maxPlayerY;
+            }
         }
 
         if(keyHandler.downPressed){
-            playerY = playerY + playerSpeed;
+            if(playerY < maxPlayerY) {
+
+                //Move the player by the player's speed
+                playerY = playerY + playerSpeed;
+            }else{
+                //If the player reaches the bottom boundary, wrap around to the top boundary
+                playerY = minPlayerY;
+            }
         }
 
         if(keyHandler.leftPressed){
-            playerX = playerX - playerSpeed;
+            if(playerX > minPlayerX) {
+
+                //Move the player by the player's speed
+                playerX = playerX - playerSpeed;
+            }else{
+                //If the player reaches the left boundary, wrap around to the right boundary
+                playerX = maxPlayerX;
+            }
         }
 
         if(keyHandler.rightPressed){
-            playerX = playerX + playerSpeed;
+            if(playerX < maxPlayerX) {
+
+                //Move the player by the player's speed
+                playerX = playerX + playerSpeed;
+            }else{
+                //If the player reaches the right boundary, wrap around to the left boundary
+                playerX = minPlayerX;
+            }
         }
 
         if(keyHandler.shoot){
-
-            if(!shootedFireball){
+            if(!fireballFlag){
+                //Create a new fireball object at the player's current position
                 new Fireball(playerX, playerY);
-                shootedFireball = true;
+                fireballFlag = true;
             }
         }
+
 
     }
 
