@@ -1,5 +1,7 @@
 package com.astroblast.asteroid;
 
+import com.astroblast.collision.CollisionChecker;
+
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.Random;
@@ -8,6 +10,7 @@ public class AsteroidManager {
     int randomNumber;
     Random randomNumberGenerator = new Random();
     LinkedList<Asteroid> asteroidList = new LinkedList<>();
+    CollisionChecker checker = new CollisionChecker();
     Asteroid asteroid;
     int number;
 
@@ -23,6 +26,12 @@ public class AsteroidManager {
         for(int x = 0; x < asteroidList.size(); x++){
             asteroid = asteroidList.get(x);
             asteroid.update();
+
+            checker.setAsteroid(asteroid.randomNumber, asteroid.asteroidY);
+
+            if(checker.checkCollision()){
+                removeAsteroid(asteroid);
+            }
         }
         number++;
         if(number == 20){
@@ -41,5 +50,9 @@ public class AsteroidManager {
 
     public void addAsteroid(Asteroid asteroid){
         asteroidList.add(asteroid);
+    }
+
+    public void removeAsteroid(Asteroid asteroid){
+        asteroidList.remove(asteroid);
     }
 }

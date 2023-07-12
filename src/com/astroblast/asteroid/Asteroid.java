@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Asteroid {
     private BufferedImage asteroidImage;
-    private int randomNumber;
+    public int randomNumber;
     public int asteroidY;
 
     public Asteroid(int randomNumber){

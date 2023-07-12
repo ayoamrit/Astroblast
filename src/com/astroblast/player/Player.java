@@ -1,6 +1,7 @@
 package com.astroblast.player;
 
 import com.astroblast.action.KeyHandler;
+import com.astroblast.collision.CollisionChecker;
 import com.astroblast.panel.GamePanel;
 import com.astroblast.panel.ScreenProperties;
 import org.jetbrains.annotations.NotNull;
@@ -121,6 +122,9 @@ public class Player extends Entity{
                 fireballFlag = true;
             }
         }
+
+        CollisionChecker checker = new CollisionChecker();
+        checker.setPlayer(playerX, playerY);
 
 
     }
